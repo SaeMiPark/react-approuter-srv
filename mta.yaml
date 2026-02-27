@@ -1,0 +1,35 @@
+_schema-version: "3.3"
+ID: market-react-approuter
+version: 1.0.0
+
+modules:
+  - name: market-react-approuter
+    type: approuter.nodejs
+    path: ./
+    build-parameters:
+      builder: custom
+      commands: 
+          - npm --prefix react-app install
+          - npm --prefix react-app run build
+    parameters:
+      memory: 128M
+      disk-quota: 1028M
+    requires:
+      - name : market-auth
+      - name : market-destination-service
+
+resources:
+  - name: market-auth
+    type: org.cloudfoundry.existing-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      service-keys:
+        - name: market-auth-key
+  - name: market-destination-service
+    type: org.cloudfoundry.existing-service
+    parameters:
+      service: destination
+      service-plan: lite
+      service-keys:
+        - name: market-destination-svc-key

@@ -1,0 +1,19 @@
+{
+  "name": "market-react-approuter",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SAP BTP Application Router",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@sap/approuter": "^15.0.0"
+  },
+  "scripts": {
+    "start": "node node_modules/@sap/approuter/approuter.js",
+    "start-local": "node node_modules/@sap/approuter/approuter.js"
+  },
+  "devDependencies": {
+    "@sap/cds-dk": "^9"
+  }
+}
